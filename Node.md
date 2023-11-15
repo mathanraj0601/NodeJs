@@ -31,6 +31,7 @@
 - nodemon : when working with express we run a server. when making a change we need to start and stop the server.it help to avoid that.
 - node-check-updates / ncu : to monitor / update package to latest version.
 - underscore : is used by developer maths calculation etc.,
+- Joi : Data validation library.
 
 ## Restful services
 
