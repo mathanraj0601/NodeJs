@@ -33,6 +33,7 @@
 - underscore : is used by developer maths calculation etc.,
 - Joi : Data validation library.
 
+
 ## Restful services
 
 - It is a way/convention to build http service
@@ -44,3 +45,11 @@
 - set : to display all env
 - set *key=value* : to set a env
 > Note : set is for storing temporarily
+
+
+## MiddleWare
+
+- It is a function which help us to process request and give it to next functin in the pipeline and terminate the request by giving response.
+eg : express.json() : middleware to convert incoming request body into json object.
+
+## 

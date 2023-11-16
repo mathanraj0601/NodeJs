@@ -1,27 +1,20 @@
-const Joi = require("joi");
-const express = require("express");
-const app = express();
-app.use(express.json()); // middleware to convert incoming http body content to json.
-x   
+const express = require('express');
+const router = express.Router();
+
 const genres = [
-  { id: 1, genre: "Horror" },
-  { id: 2, genre: "Drama" },
-  { id: 3, genre: "Thriller" },
-];
+    { id: 1, genre: "Horror" },
+    { id: 2, genre: "Drama" },
+    { id: 3, genre: "Thriller" },
+  ];
 
-app.get("/api/genres", (req, res) => {
-  const name = req.query.name;
-  if (!name) return res.send("Enter a name as query paramter");
-  res.send(`Hello ${name}`);
-});
-
-app.get("/api/genres/:id", (req, res) => {
+  
+router.get("/:id", (req, res) => {
   const genre = genres.find((genre) => genre.id === parseInt(req.params.id));
   if (!genre) return res.status(404).send("Given ID doesn't have any genres");
   res.send(genre);
 });
 
-app.delete("/api/genres/:id", (req, res) => {
+router.delete(":id", (req, res) => {
   const genre = getGenres(parseInt(req.params.id));
   if (!genre) return res.status(404).send("Given ID doesn't have any genres");
   const index = genres.indexOf(genre);
@@ -29,7 +22,7 @@ app.delete("/api/genres/:id", (req, res) => {
   res.send(genre);
 });
 
-app.post("/api/genres", (req, res) => {
+router.post("/", (req, res) => {
   const { error } = validateGenre({ genre: req.body.genre });
   if (error) return res.status(400).send(error.message);
   const genre = {
@@ -40,7 +33,7 @@ app.post("/api/genres", (req, res) => {
   res.send(genre);
 });
 
-app.put("/api/genres/:id", (req, res) => {
+router.put("/   :id", (req, res) => {
   const genre = getGenres(parseInt(req.params.id));
   if (!genre) return res.status(404).send("Given ID doesn't have any genres");
   const { error } = validateGenre({ genre: req.body.genre });
@@ -60,6 +53,4 @@ function validateGenre(genre) {
   return schema.validate(genre);
 }
 
-app.listen(3000, () => {
-  console.log("Listening in port 3000");
-});
+module.exports = router;
