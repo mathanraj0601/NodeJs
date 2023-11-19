@@ -52,4 +52,12 @@
 - It is a function which help us to process request and give it to next functin in the pipeline and terminate the request by giving response.
 eg : express.json() : middleware to convert incoming request body into json object.
 
-## 
+## Mongodb
+
+- When we set default value to property of model it will be set before hitting database by js.
+- _id aslo set like this by mangodb drive as mongodb don't do anything in making unique.there is a possibility of same id but chance is less
+- objectid has 24 character and it is 12bytes
+   - 4 bytes : timestamp ( when created we can use this to get created time).
+   - 3 bytes : machine identifier
+   - 2 bytes : process identifier
+   - 3 bytes : counter ( if all the above bytes are same still we have 2^24 unique document).
