@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {Movie, validate} = require('../models/movie');
+const admin = require('../middlewares/admin');
 
 router.get("/", async(req,res)=>{
     const movies = await Movie.find();
@@ -15,13 +16,13 @@ router.get("/:id", async(req,res)=>{
     res.send(movie);
 })
 
-router.delete("/:id", async(req,res)=>{
+router.delete("/:id",admin, async(req,res)=>{
     const movie = await Movie.findByIdAndDelete(req.params.id);
     if(!movie) return res.status(404).send("movie not found");
     res.send(movie);
 })
 
-router.put("/:id", async(req,res)=>{
+router.put("/:id",admin, async(req,res)=>{
     const {error} = validate(req.body);
     if(error) return res.status(400).send(error.message);
     try{

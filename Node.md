@@ -61,3 +61,7 @@ eg : express.json() : middleware to convert incoming request body into json obje
    - 3 bytes : machine identifier
    - 2 bytes : process identifier
    - 3 bytes : counter ( if all the above bytes are same still we have 2^24 unique document).
+
+## Design principle :
+- Information expert principle : classes or module having all the information must do expert work eg: chef cooks food with all his knowledge. so instead going for seperated single module put them inside thier respective classes.
+

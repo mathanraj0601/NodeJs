@@ -42,4 +42,4 @@ function validateGenre(genre) {
 
 exports.genreSchema = genreSchema;
 exports.Genre = Genre;
-exports.validateGenre = validateGenre();
+exports.validateGenre = validateGenre;
