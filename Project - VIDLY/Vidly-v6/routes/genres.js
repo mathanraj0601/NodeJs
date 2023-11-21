@@ -3,9 +3,8 @@ const router = express.Router();
 const {Genre, validateGenre} = require('../models/genre');
 const admin = require('../middlewares/admin');
 const auth = require("../middlewares/auth");
-const asyncMiddleware = require('../middlewares/async');
 
-router.get("/:id", asyncMiddleware(async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const genre = await Genre.findById(req.params.id);
     if (!genre) return res.status(404).send("Given ID doesn't have any genres");
@@ -13,9 +12,9 @@ router.get("/:id", asyncMiddleware(async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-}));
+});
 
-router.get("/", asyncMiddleware(async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const genre = await Genre.find();
     if (!genre) return res.status(404).send("Given ID doesn't have any genres");
@@ -23,9 +22,9 @@ router.get("/", asyncMiddleware(async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-}));
+});
 
-router.delete("/:id",admin, asyncMiddleware(async (req, res) => {
+router.delete("/:id",admin, async (req, res) => {
   try {
     const genre = await Genre.findByIdAndDelete(req.params.id);
     if (!genre) return res.status(404).send("Given ID doesn't have any genres");
@@ -33,9 +32,9 @@ router.delete("/:id",admin, asyncMiddleware(async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-}));
+});
 
-router.post("/",[auth,admin], asyncMiddleware(async (req, res) => {
+router.post("/",[auth,admin], async (req, res) => {
   const { error } =  validateGenre({ genre: req.body.genre });
   if (error) return res.status(400).send(error.message);
   const genre = new Genre({
@@ -43,9 +42,9 @@ router.post("/",[auth,admin], asyncMiddleware(async (req, res) => {
   });
   const result = await genre.save();
   res.send(result);
-}));
+});
 
-router.put("/:id",admin, asyncMiddleware(async (req, res) => {
+router.put("/:id",admin, async (req, res) => {
   const { error } = validateGenre({ genre: req.body.genre });
   if (error) return res.status(400).send(error.message);
   const genre = await Genre.findByIdAndUpdate(
@@ -57,6 +56,6 @@ router.put("/:id",admin, asyncMiddleware(async (req, res) => {
   );
   if (!genre) return res.status(404).send("Given ID doesn't have any genres");
   res.send(genre);
-}));
+});
 
 module.exports = router;

@@ -2,34 +2,33 @@ const express = require("express");
 const router = express.Router();
 const {Customer, validateCustomer} = require('../models/customer');
 const auth = require('../middlewares/auth');
-const asyncMiddleware = require('../middlewares/async');
 
-router.get("/",auth, asyncMiddleware(async (req, res) => {
+router.get("/",auth, async (req, res) => {
   const customers = await Customer.find();
   if (!customers || customers.length == 0)
     return res.status(404).send("No Customers Found");
   res.send(customers);
-}));
+});
 
-router.get("/:id", asyncMiddleware(async (req, res) => {
+router.get("/:id", async (req, res) => {
   const customer = await Customer.findById(req.params.id);
   if (!customer) return res.send("No customer found for this ID");
   res.send(customer);
-}));
+});
 
-router.get("/:id", asyncMiddleware(async (req, res) => {
+router.get("/:id", async (req, res) => {
   const customer = await Customer.findById(req.params.id);
   if (!customer) return res.status(404).send("No customer found for this ID");
   res.send(customer);
-}));
+});
 
-router.delete("/:id",auth, asyncMiddleware(async (req, res) => {
+router.delete("/:id",auth, async (req, res) => {
   const customer = await Customer.findByIdAndDelete(req.params.id);
   if (!customer) return res.status(404).send("No customer found for this ID");
   res.send(customer);
-}));
+});
 
-router.post("/",auth, asyncMiddleware(async (req, res) => {
+router.post("/",auth, async (req, res) => {
   const { error } = validateCustomer(req.body);
   if (error) return res.status(400).send(error.message);
   const customer = new Customer({
@@ -39,9 +38,9 @@ router.post("/",auth, asyncMiddleware(async (req, res) => {
   });
   await customer.save();
   res.send(customer);
-}));
+});
 
-router.put("/:id",auth, asyncMiddleware(async (req, res) => {
+router.put("/:id",auth, async (req, res) => {
   const { error } = validateCustomer(req.body);
   if (error) return res.status(400).send(error.message);
   try {
@@ -59,6 +58,6 @@ router.put("/:id",auth, asyncMiddleware(async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-}));
+});
 
 module.exports = router;

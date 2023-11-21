@@ -11,14 +11,14 @@ const asyncMiddleware = require('../middlewares/async');
  
 Fawn.init("mongodb://127.0.0.1:27017/testDB");
 
-router.get("/", asyncMiddleware(async (req,res)=>{
+router.get("/", async (req,res)=>{
     const rentals = await Rental.find();
     if( rentals.length ===0 ) return res.status(404).send("No rental found");
     return res.send(rentals);
-}))
+})
 
 
-router.post("/",[auth,admin], asyncMiddleware(async (req,res)=>{
+router.post("/",[auth,admin], async (req,res)=>{
     const {error} = validate(req.body);
     if(error) return res.status(400).send(error.message);
     const movie = await Movie.findById(req.body.movieId);
@@ -58,7 +58,7 @@ router.post("/",[auth,admin], asyncMiddleware(async (req,res)=>{
     catch(ex){
         res.status(500).send("Something failed")
     }
-}));
+});
 
 
 module.exports = router;

@@ -3,9 +3,8 @@ const router = express.Router();
 const {User, validate} = require('../models/user');
 const bcrypt = require('bcrypt');
 const _  = require('lodash');
-const asyncMiddleware = require('../middlewares/async');
 
-router.post("/",asyncMiddleware(async (req,res)=>{
+router.post("/",async (req,res)=>{
     const {error} = validate(req.body);
     if(error) return res.status(400).send(error.message);
 
@@ -19,7 +18,7 @@ router.post("/",asyncMiddleware(async (req,res)=>{
 
     const token = user.generateAuthToken();
     return res.header('x-auth-token',token).send(_.pick(user, ['name','email']));
-}));
+});
 
 
 module.exports = router;
