@@ -65,3 +65,10 @@ eg : express.json() : middleware to convert incoming request body into json obje
 ## Design principle :
 - Information expert principle : classes or module having all the information must do expert work eg: chef cooks food with all his knowledge. so instead going for seperated single module put them inside thier respective classes.
 
+## Test :
+
+Automated test help to test our application by writing and exciting test code with out having to do manual process.There are three types of test
+
+Unit test : Testing unit of code like function with out external dependencies. mostly algorithm and logic function
+Integration testing : Testing unit of code like function with external dependencies example database, http servers
+End to end testing : Testing the application through ui example selenium. Prefer to test major flow of application.
