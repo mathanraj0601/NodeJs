@@ -1,5 +1,5 @@
 # Introduction :
-This repository consist of learning documentation of Nodejs and projecy.
+This repository consist of learning documentation of Nodejs and projects.
 
 
 ## Project 
