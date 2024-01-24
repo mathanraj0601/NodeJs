@@ -3,8 +3,8 @@ global.console.log("global object");
 /*
 - In node the varible are not by default to global scopes.
 - Each file acts as module like a class or constructor function with parameter.
-- Content inside eacg file has access only within the file 
-- To make it avaulable to other file/module we need to export and load
+- Content inside each file has access only within the file 
+- To make it value to other file/module we need to export and load
 */
 
 // The paramter for constructor function are
