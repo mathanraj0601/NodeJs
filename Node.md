@@ -38,6 +38,11 @@
 
 - It is a way/convention to build http service
 - It involves uisng http principle around resource or entity
+    ![image](https://github.com/mathanraj0601/NodeJs/assets/98396468/4f065342-4c5c-49b1-ada4-5af62a0c1108)
+   ![image](https://github.com/mathanraj0601/NodeJs/assets/98396468/28333b44-e27f-4ee3-bb03-622d24979c6c)
+   ![image](https://github.com/mathanraj0601/NodeJs/assets/98396468/654c5389-37a7-43e0-837c-64b6cec01b53)
+
+
 - using express which is built in top of the http client make building restful api easy with lot of feature like middleware routes etc.,
 
 ## Environment variable (window)
