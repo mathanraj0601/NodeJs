@@ -1,6 +1,6 @@
 // Import module-demo
 const demoModule = require('./module-demo');
-//Use const while importing module to avoide mistakes.
+//Use const while importing module to avoid mistakes like reassign the imported values.
 
 console.log("hello world!")
 
@@ -11,6 +11,8 @@ inbuilt module
 Example: 
  document.getElementById("if");
  result in undefined error
+Example for nodejs 
+ global.console.log("hello") or console.log("hello") as nodejs can understand it
 */
 
 // import a single function
