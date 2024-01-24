@@ -68,6 +68,8 @@ eg : express.json() : middleware to convert incoming request body into json obje
    - 3 bytes : machine identifier
    - 2 bytes : process identifier
    - 3 bytes : counter ( if all the above bytes are same still we have 2^24 unique document).
+- document embedding is storing the data within the model or collection itself : query faster but redundancy 
+- Reference is like only storing the id of other model and later use  populate() method to retrive it ; query slower as need to retrive from other collection but reduces redundancy
 
 ## Design principle :
 - Information expert principle : classes or module having all the information must do expert work eg: chef cooks food with all his knowledge. so instead going for seperated single module put them inside thier respective classes. instead of making a seperated class to cook with all ingredient we can use cook class as it have all details
