@@ -18,6 +18,9 @@ console.log(os.totalmem());
 // Get dir of a path
 console.log(path.dirname('/'));
 
+//Read a directory
+file.readdir('./',(err,files)=>console.log(files));
+
 /* 
 listen to event and then call callback function 
 (which is called after the event is occured / async activity produce result) 
@@ -25,15 +28,14 @@ we don't use event like this. better way is in another file
 */ 
 event.addListener('hello', ()=>console.log('hello event')) // or  event.on('hello', ()=>console.log('hello event'))
 
-// emit a event - this will emit a event and search for listener above it from top to bottom
+// emit a event - this will emit a event and search for listener above it from top to bottom till the emit if mentioned below will let to issue.
 event.emit('hello')
 
 // Best approch for event for calling between modules.
 eventExtend.addListener('emitted',()=>console.log('called emitted'))
 eventExtend.emitDemo();
 
-//Read a directory
-file.readdir('./',(err,files)=>console.log(files));
+
 
 
 
