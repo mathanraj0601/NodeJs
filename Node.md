@@ -25,7 +25,9 @@
 - npm i *package-name* --save-dev : to store the dependencies for development and not for deployment / production.
 - npm login : to login to npm registry.
 - npm publish : to publish to npm registry.
-- npm version major/minor/patch : to update existing package. 
+- npm version major/minor/patch : to update existing package.
+- We are using commonJs as module type so we need to export.module and import using require
+- If Es6 we can export using export and import using from like react but need to have extension ".mjs"
 
 ## Node package
 - nodemon : when working with express we run a server. when making a change we need to start and stop the server.it help to avoid that.
